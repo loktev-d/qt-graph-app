@@ -5,12 +5,12 @@ import Table from "./table/Table";
 
 export default function App() {
   return (
-    <Container maxWidth="md" sx={{ mt: 2 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={4}>
+    <Container maxWidth="lg" sx={{ mt: 2, height: "100vh" }}>
+      <Grid container spacing={2} sx={{ pb: 2, height: "100%" }}>
+        <Grid item xs={2}>
           <Menu />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={10}>
           <Table />
         </Grid>
       </Grid>

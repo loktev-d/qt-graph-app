@@ -5,15 +5,17 @@ from PySide6.QtWebEngineWidgets import QWebEngineView
 import sys
 import json
 
-def application(config):
+from webengineview import WebEngineView
+
+def bootstrapApp(config):
     app = QApplication(sys.argv) 
 
     window = QMainWindow()
     window.setWindowTitle("Qt List")
-    window.resize(config["windowSize"]["width"], config["windowSize"]["height"])
+    window.setFixedSize(config["windowSize"]["width"], config["windowSize"]["height"])
     window.move(app.screens()[0].availableGeometry().center() - window.frameGeometry().center())
     
-    view = QWebEngineView(window)
+    view = WebEngineView(window)
     view.setContextMenuPolicy(Qt.NoContextMenu)
     view.load(config["clientUrl"])
 
@@ -23,6 +25,6 @@ def application(config):
     sys.exit(app.exec())
 
 if __name__ == "__main__":
-    with open("config.json", "r") as config_file:
-        config = json.load(config_file)
-        application(config)
+    with open("config.json", "r") as configFile:
+        config = json.load(configFile)
+        bootstrapApp(config)
