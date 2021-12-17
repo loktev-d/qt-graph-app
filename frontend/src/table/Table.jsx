@@ -1,8 +1,11 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { updateSelected } from "./tableSlice";
 
 export default function Table() {
   const state = useSelector((state) => state.table);
+  const dispatch = useDispatch();
 
   return (
     <DataGrid
@@ -12,6 +15,16 @@ export default function Table() {
       pageSize={8}
       checkboxSelection
       disableSelectionOnClick
+      editMode="row"
+      onEditRowsModelChange={(model) => {
+        dispatch({
+          type: "table/editItem",
+          payload: model,
+        });
+      }}
+      onSelectionModelChange={(model) => {
+        dispatch(updateSelected(model));
+      }}
     />
   );
 }

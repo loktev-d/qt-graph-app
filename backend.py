@@ -6,16 +6,17 @@ class Backend(QObject):
     openFileClicked = Signal()
     saveFileClicked = Signal()
 
+    tableData = None
+
     def __init__(self, parent=None):
         super().__init__(parent)
-        self._tableData = None
 
     def setTableData(self, data):
-        self._tableData = data
+        self.tableData = data
 
     @Slot(result=str)
     def getTableData(self):
-        return json.dumps(self._tableData)
+        return json.dumps(self.tableData)
 
     @Slot()
     def openFile(self):
@@ -25,18 +26,35 @@ class Backend(QObject):
     def saveFile(self):
         self.saveFileClicked.emit()
 
-    @Slot(result=str)
-    def deleteItem(self, index):
-        del self._tableData[index]
-        return json.dumps(self._tableData)
+    @Slot(str, result=str)
+    def deleteItems(self, jsonIds):
+        ids = json.loads(jsonIds)
 
-    @Slot(result=str)
-    def addItem(self, item):
-        self._tableData.append(item)
-        return json.dumps(self._tableData)
+        for id in ids:
+            for elem in self.tableData["Items"]["Item"]:
+                if (elem["Id"] == id):
+                    self.tableData["Items"]["Item"].remove(elem)
+                    break
 
-    @Slot(result=str)
-    def editItem(self, index, item):
-        del self._tableData[index]
-        self._tableData.insert(index, item)
-        return json.dumps(self._tableData)
+        return json.dumps(self.tableData)
+
+    @Slot(str, result=str)
+    def addItem(self, jsonItem):
+        self.tableData["Items"]["Item"].append(json.loads(jsonItem))
+        return json.dumps(self.tableData)
+
+    @Slot(str, result=str)
+    def editItem(self, jsonItem):
+        item = json.loads(jsonItem)
+        id = item["Id"]
+
+        index = 0
+
+        for elem in self.tableData["Items"]["Item"]:
+            if (elem["Id"] == id):
+                index = self.tableData["Items"]["Item"].index(elem)
+                self.tableData["Items"]["Item"].remove(elem)
+                break
+
+        self.tableData["Items"]["Item"].insert(index, item)
+        return json.dumps(self.tableData)

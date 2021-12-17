@@ -11,6 +11,8 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useDispatch, useSelector } from "react-redux";
 
+import { saveTableData } from "../backend-api";
+
 export default function Menu() {
   const dispatch = useDispatch();
   const table = useSelector((state) => state.table);
@@ -20,7 +22,7 @@ export default function Menu() {
       <List>
         <ListItemButton
           onClick={() => {
-            dispatch({ type: "table/requestLoadFile" });
+            dispatch({ type: "table/loadFile" });
           }}
         >
           <ListItemIcon>
@@ -29,7 +31,11 @@ export default function Menu() {
           <ListItemText primary="Open File" />
         </ListItemButton>
 
-        <ListItemButton>
+        <ListItemButton
+          onClick={() => {
+            saveTableData();
+          }}
+        >
           <ListItemIcon>
             <SaveAsIcon />
           </ListItemIcon>
@@ -37,7 +43,11 @@ export default function Menu() {
         </ListItemButton>
 
         {table.columns.length ? (
-          <ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              dispatch({ type: "table/addItem" });
+            }}
+          >
             <ListItemIcon>
               <AddCircleIcon />
             </ListItemIcon>
@@ -46,7 +56,11 @@ export default function Menu() {
         ) : null}
 
         {table.rows.length ? (
-          <ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              dispatch({ type: "table/deleteItems", payload: table.selected });
+            }}
+          >
             <ListItemIcon>
               <RemoveCircleIcon />
             </ListItemIcon>

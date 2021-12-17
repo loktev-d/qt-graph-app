@@ -16,12 +16,30 @@ class WebEngineView(QWebEngineView):
         self.page().loadFinished.connect(self.handleLoadFinished)
 
         self._backend.openFileClicked.connect(self.handleOpenFileClicked)
+        self._backend.saveFileClicked.connect(self.handleSaveFileClicked)
 
     def handleOpenFileClicked(self):
         fileName = QFileDialog.getOpenFileName(self, "Open File", QDir().currentPath(), "XML files (*.xml)")
+
+        if fileName[0] == '':
+            return
+
         xmlDict = self._xmlHelper.parse(fileName[0])
         self._backend.setTableData(xmlDict)
 
+    def handleSaveFileClicked(self):
+        dialog = QFileDialog(self)
+        dialog.setFileMode(QFileDialog.AnyFile)
+        dialog.setDirectory(QDir().currentPath())
+        dialog.setNameFilter("XML files (*.xml)")
+
+        if dialog.exec_():
+            fileName = dialog.selectedFiles()[0]
+
+            if fileName == '':
+                return
+
+            self._xmlHelper.save(self._backend.tableData, fileName)
 
     def handleLoadFinished(self, ok):
         if ok:

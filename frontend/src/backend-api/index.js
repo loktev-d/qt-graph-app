@@ -4,18 +4,21 @@ export async function loadFile() {
   return JSON.parse(res);
 }
 
-export async function editTableItem(index, item) {
-  let res = await window.backend.editItem(index, item);
+export async function editTableItem(item) {
+  let param = JSON.stringify(item);
+  let res = await window.backend.editItem(param);
   return JSON.parse(res);
 }
 
 export async function addTableItem(item) {
-  let res = window.backend.addItem(item);
+  let param = JSON.stringify(item);
+  let res = await window.backend.addItem(param);
   return JSON.parse(res);
 }
 
-export async function deleteTableItem(index) {
-  let res = window.backend.deleteItem(index);
+export async function deleteTableItems(ids) {
+  let param = JSON.stringify(ids);
+  let res = await window.backend.deleteItems(param);
   return JSON.parse(res);
 }
 
@@ -27,7 +30,7 @@ const api = {
   loadFile,
   editTableItem,
   addTableItem,
-  deleteTableItem,
+  deleteTableItems,
   saveTableData,
 };
 
