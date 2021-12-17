@@ -1,91 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>                     
-    <Items>
-        <Item>
-            <Id>1</Id>
-            <FirstName>Daniil</FirstName>
-            <SecondName>Loktev</SecondName>
-            <DateOfBirth>December 17, 1995 03:24:00</DateOfBirth>
-            <Address>sdfksjdfklsdklf</Address>
-            <PassportNumber>293 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>2</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>3</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>4</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>5</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>6</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>7</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>8</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>9</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>10</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-        <Item>
-            <Id>11</Id>
-            <FirstName>Ivan</FirstName>
-            <SecondName>Ivanov</SecondName>
-            <DateOfBirth>December 17, 2001 03:24:00</DateOfBirth>
-            <Address>sdkfjskdfl</Address>
-            <PassportNumber>274 39 39</PassportNumber>
-        </Item>
-    </Items>
+    <Edges>
+        <Edge>
+            <Node>apple</Node>
+            <Node>strawberry</Node>
+        </Edge>
+        <Edge>
+            <Node>strawberry</Node>
+            <Node>cherry</Node>
+        </Edge>
+        <Edge>
+            <Node>strawberry</Node>
+            <Node>tomato</Node>
+        </Edge>
+        <Edge>
+            <Node>tomato</Node>
+            <Node>apple</Node>
+        </Edge>
+        <Edge>
+            <Node>tomato</Node>
+            <Node>kiwi</Node>
+        </Edge>
+        <Edge>
+            <Node>cherry</Node>
+            <Node>kiwi</Node>
+        </Edge>
+        <Edge>
+            <Node>cherry</Node>
+            <Node>apple</Node>
+        </Edge>
+    </Edges>
